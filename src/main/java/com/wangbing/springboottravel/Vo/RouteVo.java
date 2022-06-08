@@ -1,18 +1,14 @@
-package com.wangbing.springboottravel.domain;
+package com.wangbing.springboottravel.Vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.wangbing.springboottravel.domain.Category;
+import com.wangbing.springboottravel.domain.RouteImg;
+import com.wangbing.springboottravel.domain.Seller;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.List;
 
-/**
- * 旅游线路商品实体类
- */
 @Data
-@TableName("tab_route")
-public class Route implements Serializable {
-
+public class RouteVo {
     private int rid;//线路id，必输
     private String rname;//线路名称，必输
     private double price;//价格，必输
@@ -26,4 +22,7 @@ public class Route implements Serializable {
     private int sid;//所属商家
     private String sourceId;//抓取数据的来源id
 
+    private Category category;//所属分类
+    private Seller seller;//所属商家
+    private List<RouteImg> routeImgList;//商品详情图片列表
 }

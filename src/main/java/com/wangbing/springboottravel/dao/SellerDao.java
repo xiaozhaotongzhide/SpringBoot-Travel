@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface SellerDao extends BaseMapper<Seller> {
-    public Seller findById(int id);
 }

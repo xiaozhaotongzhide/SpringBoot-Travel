@@ -1,5 +1,6 @@
 package com.wangbing.springboottravel.service;
 
+import com.wangbing.springboottravel.Vo.RouteVo;
 import com.wangbing.springboottravel.domain.PageBean;
 import com.wangbing.springboottravel.domain.Route;
 
@@ -11,9 +12,9 @@ public interface RouteService {
      * @param pageSize
      * @return
      */
-    public PageBean<Route> pageQuery(int cid,int currentPageBean,int pageSize,String rname);
+    PageBean<Route> pageQuery(int cid,int currentPageBean,int pageSize,String rname);
 
-    Route findOne(String rid);
+    RouteVo findOne(String rid);
 
 
 }

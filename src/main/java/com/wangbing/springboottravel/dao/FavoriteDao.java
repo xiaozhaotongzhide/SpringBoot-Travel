@@ -11,10 +11,6 @@ import java.util.List;
 @Mapper
 public interface FavoriteDao extends BaseMapper<Favorite> {
 
-    public Favorite findByRidAndUid(int rid,int uid);
-
-    int findCountByRid(int rid);
-
     void addFavorite(int rid, int uid);
 
     int findCount(int uid);

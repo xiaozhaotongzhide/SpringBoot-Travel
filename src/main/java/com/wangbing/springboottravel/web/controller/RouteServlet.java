@@ -1,5 +1,6 @@
 package com.wangbing.springboottravel.web.controller;
 
+import com.wangbing.springboottravel.Vo.RouteVo;
 import com.wangbing.springboottravel.domain.PageBean;
 import com.wangbing.springboottravel.domain.Route;
 import com.wangbing.springboottravel.domain.User;
@@ -33,7 +34,7 @@ public class RouteServlet extends BaseServlet {
      * @throws IOException
      */
     @GetMapping("travel/route/pageQuery")
-    public void pageQuery(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void pageQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //接受参数
         String currentPageStr = request.getParameter("currentPage");
         String pageSizeStr = request.getParameter("pageSize");
@@ -81,7 +82,7 @@ public class RouteServlet extends BaseServlet {
         //1.接收id
         String rid = request.getParameter("rid");
         //2.调用service
-        Route route = routesercice.findOne(rid);
+        RouteVo route = routesercice.findOne(rid);
         //3.转化为json
         writeValue(route, response);
     }

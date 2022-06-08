@@ -1,5 +1,6 @@
 package com.wangbing.springboottravel.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wangbing.springboottravel.dao.FavoriteDao;
 import com.wangbing.springboottravel.domain.Favorite;
 import com.wangbing.springboottravel.domain.PageBean;
@@ -15,23 +16,26 @@ public class FavoriteServiceimpl implements FavoriteService {
 
     @Autowired
     private FavoriteDao favoriteDao;
+
     /**
      * 判断是否收藏
+     *
      * @param rid
      * @param uid
      * @return
      */
     @Override
     public boolean isFavorite(String rid, int uid) {
-
-        Favorite byRidAndUid = favoriteDao.findByRidAndUid(Integer.parseInt(rid), uid);
-
+        QueryWrapper<Favorite> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("rid", rid);
+        queryWrapper.eq("uid", uid);
+        Favorite byRidAndUid = favoriteDao.selectOne(queryWrapper);
         return byRidAndUid != null;//如果对象有值，则为ture，反之则为false
     }
 
     @Override
     public void addFavorite(String rid, int uid) {
-        favoriteDao.addFavorite(Integer.parseInt(rid),uid);
+        favoriteDao.addFavorite(Integer.parseInt(rid), uid);
     }
 
     @Override
@@ -46,11 +50,11 @@ public class FavoriteServiceimpl implements FavoriteService {
         int totalCount = favoriteDao.findCount(uid);
         pb.setTotalCount(totalCount);
         //设置当前页面的数据集合
-        int start = (currentPage - 1)*pageSize;//开始的记录数
-        List<Route> list = favoriteDao.findByPageUid(start,pageSize,uid);
+        int start = (currentPage - 1) * pageSize;//开始的记录数
+        List<Route> list = favoriteDao.findByPageUid(start, pageSize, uid);
         pb.setList(list);
         //设置总页数
-        int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : (totalCount / pageSize)+1;
+        int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : (totalCount / pageSize) + 1;
         pb.setTotalPage(totalPage);
         return pb;
     }

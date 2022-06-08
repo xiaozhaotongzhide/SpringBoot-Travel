@@ -11,26 +11,7 @@ import java.io.Serializable;
 @Data
 @TableName("tab_favorite")
 public class Favorite implements Serializable {
-    private Route route;//旅游线路对象
-    private String date;//收藏时间
-    private User user;//所属用户
-
-    /**
-     * 无参构造方法
-     */
-    public Favorite() {
-    }
-
-    /**
-     * 有参构造方法
-     * @param route
-     * @param date
-     * @param user
-     */
-    public Favorite(Route route, String date, User user) {
-            this.route = route;
-            this.date = date;
-            this.user = user;
-    }
-
+    private String rid;//旅游线路对象
+    private Data date;//收藏时间
+    private String uid;//所属用户
 }

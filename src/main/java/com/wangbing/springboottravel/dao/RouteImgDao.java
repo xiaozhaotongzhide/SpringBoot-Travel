@@ -10,10 +10,4 @@ import java.util.List;
 @Repository
 @Mapper
 public interface RouteImgDao extends BaseMapper<RouteImg> {
-    /**
-     * 根据rid查询图片
-     * @param rid
-     * @return
-     */
-    public List<RouteImg> findByRid(int rid);
 }
